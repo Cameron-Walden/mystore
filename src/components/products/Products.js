@@ -3,10 +3,6 @@ import { Grid } from "@mui/material";
 import Product from "../product/Product";
 import useStyles from "./productsStyles";
  
-
-/* if something breaks, move products, commerece back to app and remove commerce 
-and destructure products here */
-
 export default function Products({ commerce, onAddToCart }) {
   const [products, setProducts] = useState([]);
   const classes = useStyles();

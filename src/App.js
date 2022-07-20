@@ -36,8 +36,7 @@ export default function App() {
   useEffect(() => {
     getCart();
   }, []);
-
-  // console.log(cart, '<==cart')
+  
   return (
     <Router>
       <div>
