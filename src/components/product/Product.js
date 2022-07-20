@@ -10,11 +10,6 @@ import { AddShoppingCart } from "@mui/icons-material";
 
 import useStyles from "./productStyles";
 
-/*
-can pass props or destructure the products we're mapping over from Products.js. 
-makjes things a but cleaner
-*/
-
 export default function Product({ product, onAddToCart }) {
   const classes = useStyles();
 
@@ -26,8 +21,7 @@ export default function Product({ product, onAddToCart }) {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image="https://i5.walmartimages.com/asr/6777fc37-0fe4-42e0-8b0d-77a6a90e6b47_1.d799309552c5d283fff87e326c02d4cb.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
-        /*image={product.media.source}*/ 
+        image={product.image.url}
         title={product.name}
       />
       <CardContent>
