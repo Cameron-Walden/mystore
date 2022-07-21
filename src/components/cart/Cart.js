@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, CircularProgress } from "@mui/material";
 import EmptyCart from "../emptycart/EmptyCart";
 import FilledCart from "../filledcart/FilledCart";
 import useStyles from "./cartStyles";
@@ -29,7 +29,10 @@ export default function Cart({ commerce, cart, setCart }) {
 
   useEffect(() => {
     getCart();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if(!cart.line_items) return <CircularProgress />
 
   return (
     <Container>
@@ -37,7 +40,7 @@ export default function Cart({ commerce, cart, setCart }) {
       <Typography className={classes.title} variant="h3">
         Shopping Cart
       </Typography>
-      {/* {!cart.line_items.length ? (
+      {!cart.line_items.length ? (
         <EmptyCart cart={cart} />
       ) : (
         <FilledCart
@@ -46,23 +49,7 @@ export default function Cart({ commerce, cart, setCart }) {
           updateCartQuantity={updateCartQuantity}
           removeFromCart={removeFromCart}
         />
-      )} */}
-      <FilledCart
-          cart={cart}
-          emptyCart={emptyCart}
-          updateCartQuantity={updateCartQuantity}
-          removeFromCart={removeFromCart}
-        />
-      {/* {cart.line_items.length > 0 ? (
-        <FilledCart
-          cart={cart}
-          emptyCart={emptyCart}
-          updateCartQuantity={updateCartQuantity}
-          removeFromCart={removeFromCart}
-        />
-      ) : (
-        <EmptyCart cart={cart} />
-      )} */}
+      )}
     </Container>
   );
 }
