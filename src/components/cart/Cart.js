@@ -4,7 +4,7 @@ import EmptyCart from '../emptycart/EmptyCart'
 import FilledCart from "../filledcart/FilledCart";
 import useStyles from "./cartStyles";
 
-export default function Cart({ commerce, cart, setCart, removeFromCart, emptyCart }) {
+export default function Cart({ commerce, cart, setCart, emptyCart }) {
   const classes = useStyles();
 
   const getCart = async () => {
@@ -14,6 +14,11 @@ export default function Cart({ commerce, cart, setCart, removeFromCart, emptyCar
 
   const updateCartQuantity = async (id, quantity) => {
     const response = await commerce.cart.update(id, { quantity });
+    setCart(response.cart);
+  };
+
+  const removeFromCart = async (id) => {
+    const response = await commerce.cart.remove(id);
     setCart(response.cart);
   };
 

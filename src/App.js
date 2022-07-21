@@ -8,11 +8,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function App() {
   const [cart, setCart] = useState({});
 
-  const removeFromCart = async (id) => {
-    const response = await commerce.cart.remove(id);
-    setCart(response.cart);
-  };
-
   const emptyCart = async () => {
     const response = await commerce.cart.empty();
     setCart(response.cart);
@@ -25,7 +20,7 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<Products commerce={commerce} setCart={setCart}/>}
+            element={<Products commerce={commerce} setCart={setCart} />}
           ></Route>
           <Route
             path="/cart"
@@ -34,7 +29,6 @@ export default function App() {
                 commerce={commerce}
                 cart={cart}
                 setCart={setCart}
-                removeFromCart={removeFromCart}
                 emptyCart={emptyCart}
               />
             }
