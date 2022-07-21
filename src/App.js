@@ -8,11 +8,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function App() {
   const [cart, setCart] = useState({});
 
-  const addToCart = async (productId, quantity) => {
-    const response = await commerce.cart.add(productId, quantity);
-    setCart(response.cart);
-  };
-
   const updateCartQuantity = async (id, quantity) => {
     const response = await commerce.cart.update(id, { quantity });
     setCart(response.cart);
@@ -35,7 +30,7 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<Products commerce={commerce} addToCart={addToCart} />}
+            element={<Products commerce={commerce} setCart={setCart}/>}
           ></Route>
           <Route
             path="/cart"
