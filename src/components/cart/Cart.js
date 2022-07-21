@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import EmptyCart from "../EmptyCart";
+import EmptyCart from '../emptycart/EmptyCart'
 import FilledCart from "../filledcart/FilledCart";
 import useStyles from "./cartStyles";
 
