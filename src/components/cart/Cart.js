@@ -4,12 +4,17 @@ import EmptyCart from '../emptycart/EmptyCart'
 import FilledCart from "../filledcart/FilledCart";
 import useStyles from "./cartStyles";
 
-export default function Cart({ commerce, cart, setCart, updateCartQuantity, removeFromCart, emptyCart }) {
+export default function Cart({ commerce, cart, setCart, removeFromCart, emptyCart }) {
   const classes = useStyles();
 
   const getCart = async () => {
     const response = await commerce.cart.retrieve();
     setCart(response);
+  };
+
+  const updateCartQuantity = async (id, quantity) => {
+    const response = await commerce.cart.update(id, { quantity });
+    setCart(response.cart);
   };
 
   useEffect(() => {
