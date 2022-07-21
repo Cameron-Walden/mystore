@@ -8,11 +8,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function App() {
   const [cart, setCart] = useState({});
 
-  const emptyCart = async () => {
-    const response = await commerce.cart.empty();
-    setCart(response.cart);
-  };
-
   return (
     <Router>
       <div>
@@ -29,7 +24,6 @@ export default function App() {
                 commerce={commerce}
                 cart={cart}
                 setCart={setCart}
-                emptyCart={emptyCart}
               />
             }
           ></Route>

@@ -1,10 +1,10 @@
-import { useEffect} from 'react';
+import { useEffect } from "react";
 import { Container, Typography } from "@mui/material";
-import EmptyCart from '../emptycart/EmptyCart'
+import EmptyCart from "../emptycart/EmptyCart";
 import FilledCart from "../filledcart/FilledCart";
 import useStyles from "./cartStyles";
 
-export default function Cart({ commerce, cart, setCart, emptyCart }) {
+export default function Cart({ commerce, cart, setCart }) {
   const classes = useStyles();
 
   const getCart = async () => {
@@ -22,6 +22,11 @@ export default function Cart({ commerce, cart, setCart, emptyCart }) {
     setCart(response.cart);
   };
 
+  const emptyCart = async () => {
+    const response = await commerce.cart.empty();
+    setCart(response.cart);
+  };
+
   useEffect(() => {
     getCart();
   });
@@ -32,7 +37,7 @@ export default function Cart({ commerce, cart, setCart, emptyCart }) {
       <Typography className={classes.title} variant="h3">
         Shopping Cart
       </Typography>
-      {!cart.line_items.length ? (
+      {/* {!cart.line_items.length ? (
         <EmptyCart cart={cart} />
       ) : (
         <FilledCart
@@ -41,13 +46,23 @@ export default function Cart({ commerce, cart, setCart, emptyCart }) {
           updateCartQuantity={updateCartQuantity}
           removeFromCart={removeFromCart}
         />
-      )}
-      {/* <FilledCart
+      )} */}
+      <FilledCart
           cart={cart}
           emptyCart={emptyCart}
           updateCartQuantity={updateCartQuantity}
           removeFromCart={removeFromCart}
-        /> */}
+        />
+      {/* {cart.line_items.length > 0 ? (
+        <FilledCart
+          cart={cart}
+          emptyCart={emptyCart}
+          updateCartQuantity={updateCartQuantity}
+          removeFromCart={removeFromCart}
+        />
+      ) : (
+        <EmptyCart cart={cart} />
+      )} */}
     </Container>
   );
 }
