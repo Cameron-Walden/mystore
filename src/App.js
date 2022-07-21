@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { commerce } from "./commerce/commerce";
 import NavBar from "./components/navbar/NavBar";
 import Products from "./components/products/Products";
@@ -7,11 +7,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function App() {
   const [cart, setCart] = useState({});
-
-  const getCart = async () => {
-    const response = await commerce.cart.retrieve();
-    setCart(response);
-  };
 
   const addToCart = async (productId, quantity) => {
     const response = await commerce.cart.add(productId, quantity);
@@ -33,10 +28,6 @@ export default function App() {
     setCart(response.cart);
   };
 
-  useEffect(() => {
-    getCart();
-  }, []);
-  
   return (
     <Router>
       <div>
@@ -44,13 +35,15 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<Products commerce={commerce} onAddToCart={addToCart} />}
+            element={<Products commerce={commerce} addToCart={addToCart} />}
           ></Route>
           <Route
             path="/cart"
             element={
               <Cart
+                commerce={commerce}
                 cart={cart}
+                setCart={setCart}
                 updateCartQuantity={updateCartQuantity}
                 removeFromCart={removeFromCart}
                 emptyCart={emptyCart}
