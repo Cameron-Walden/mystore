@@ -10,7 +10,7 @@ import { AddShoppingCart } from "@mui/icons-material";
 
 import useStyles from "./productStyles";
 
-export default function Product({ product, onAddToCart }) {
+export default function Product({ product, addToCart }) {
   const classes = useStyles();
 
   const productDescription = () => {
@@ -42,7 +42,7 @@ export default function Product({ product, onAddToCart }) {
       <CardActions disableSpacing className={classes.cardActions}>
         <IconButton
           aria-label="Add to Cart"
-          onClick={() => onAddToCart(product.id, 1)}
+          onClick={() => addToCart(product.id, 1)}
         >
           <AddShoppingCart />
         </IconButton>
