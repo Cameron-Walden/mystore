@@ -1,0 +1,7 @@
+.products{
+    flex-grow: 1;
+    padding: 3;
+}
+.spacing{
+    margin-top: 5% !important;
+}
