@@ -2,11 +2,9 @@ import { useEffect } from "react";
 import { Container, Typography, CircularProgress } from "@mui/material";
 import EmptyCart from "../emptycart/EmptyCart";
 import FilledCart from "../filledcart/FilledCart";
-import useStyles from "./cartStyles";
+import "./Cart.css";
 
 export default function Cart({ commerce, cart, setCart }) {
-  const classes = useStyles();
-
   const getCart = async () => {
     const response = await commerce.cart.retrieve();
     setCart(response);
@@ -32,12 +30,13 @@ export default function Cart({ commerce, cart, setCart }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if(!cart.line_items) return <CircularProgress />
+  if (!cart.line_items) return <CircularProgress />;
+
+  console.log(cart.line_items);
 
   return (
     <Container>
-      <div className={classes.toolbar} />
-      <Typography className={classes.title} variant="h3">
+      <Typography className="title" variant="h3">
         Shopping Cart
       </Typography>
       {!cart.line_items.length ? (
