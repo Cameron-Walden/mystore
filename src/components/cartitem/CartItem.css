@@ -1,0 +1,15 @@
+.cardMedia {
+  height: 250px;
+}
+
+.cardContent {
+  justify-content: space-between;
+}
+
+.cartCardActions {
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex; 
+} 
