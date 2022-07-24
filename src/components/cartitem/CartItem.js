@@ -6,29 +6,24 @@ import {
   CardContent,
   CardMedia,
 } from "@mui/material";
-import useStyles from "./cartItemStyles";
+import "./CartItem.css";
 
-export default function CartItem({
-  cartItem,
-  updateCartQuantity,
-  removeFromCart,
-}) {
-  const classes = useStyles();
+export default function CartItem({ cartItem, updateCartQuantity,removeFromCart }) {
+
   return (
     <Card>
       <CardMedia
-        className={classes.media}
-        //   image={cartItem.media.source}
-        image="https://i5.walmartimages.com/asr/6777fc37-0fe4-42e0-8b0d-77a6a90e6b47_1.d799309552c5d283fff87e326c02d4cb.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
+        className="cardMedia"
+        image={cartItem.image.url}
         alt={cartItem.name}
       />
-      <CardContent className={classes.cardContent}>
-        <Typography variant="h4">{cartItem.name}</Typography>
-        <Typography variant="h5">
+      <CardContent className="cardContent">
+        <Typography variant="h5">{cartItem.name}</Typography>
+        <Typography variant="h6">
           {cartItem.line_total.formatted_with_symbol}
         </Typography>
-        <CardActions className={classes.cartActions}>
-          <div className={classes.buttons}>
+        <CardActions className="cartCardActions">
+          <div className="buttons">
             <Button
               type="button"
               size="small"
