@@ -22,7 +22,7 @@ export default function FilledCart({ cart, updateCartQuantity, removeFromCart, e
             ))}
           </Grid>
           <div className="cardDetails">
-            <Typography variant="h4">
+            <Typography variant="h5">
               Subtotal: {cart.subtotal.formatted_with_symbol}
             </Typography>
             <div>
