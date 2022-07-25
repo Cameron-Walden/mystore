@@ -24,7 +24,7 @@ export default function Products({ commerce, setCart }) {
   return (
     <main className="products">
       <div className="spacing" />
-      <Grid container justify="center" spacing={4}>
+      <Grid container justifyContent="center" spacing={4}>
         {products.map((product) => (
           <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
             <Product product={product} addToCart={addToCart} />
