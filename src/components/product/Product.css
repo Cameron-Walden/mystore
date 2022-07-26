@@ -1,0 +1,13 @@
+.card{
+    max-width: 345px;
+}
+
+.cardActions{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cardContent{
+    display: flex;
+    justify-content: space-between;
+}
