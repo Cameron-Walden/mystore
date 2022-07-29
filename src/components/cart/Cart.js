@@ -32,8 +32,6 @@ export default function Cart({ commerce, cart, setCart }) {
 
   if (!cart.line_items) return <CircularProgress />;
 
-  console.log(cart.line_items);
-
   return (
     <Container>
       <Typography className="title" variant="h3">

@@ -2,7 +2,6 @@ import { AppBar, Badge, Toolbar, Typography, IconButton } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/shop-logo.jpeg";
-
 import useStyles from "./navStyles";
 
 export default function NavBar({ cart }) {

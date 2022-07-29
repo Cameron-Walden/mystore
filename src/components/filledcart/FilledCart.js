@@ -1,9 +1,14 @@
 import { Grid, Typography, Button, CircularProgress } from "@mui/material";
 import CartItem from "../cartitem/CartItem";
-import './FilledCart.css';
+import { Link } from "react-router-dom";
+import "./FilledCart.css";
 
-export default function FilledCart({ cart, updateCartQuantity, removeFromCart, emptyCart }) {
-
+export default function FilledCart({
+  cart,
+  updateCartQuantity,
+  removeFromCart,
+  emptyCart,
+}) {
   return (
     <>
       {!cart.line_items ? (
@@ -36,15 +41,17 @@ export default function FilledCart({ cart, updateCartQuantity, removeFromCart, e
               >
                 Empty Cart
               </Button>
-              <Button
-                className="checkoutButton"
-                size="large"
-                type="button"
-                variant="contained"
-                color="primary"
-              >
-                Checkout
-              </Button>
+              <Link to="/checkout" className="checkoutLink">
+                <Button
+                  className="checkoutButton"
+                  size="large"
+                  type="button"
+                  variant="contained"
+                  color="primary"
+                >
+                  Checkout
+                </Button>
+              </Link>
             </div>
           </div>
         </>
